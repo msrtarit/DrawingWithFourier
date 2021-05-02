@@ -1,3 +1,7 @@
+//generated using inkscape extension and 
+//used this to format the data:https://techbrij.com/tools/text-formatter-2d.php
+
+
 let drawing = [
 {x: 588.422, y: 458.281 },
 {x: 589.628, y: 463.75100000000003 },
