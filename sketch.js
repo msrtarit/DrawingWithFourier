@@ -12,7 +12,7 @@ let time = 0;
 let path = [];
 
 function setup() {
-  createCanvas(2600, 1400);
+  createCanvas(1550, 760);
   const skip = 3;
   for (let i = 0; i < drawing.length; i += skip) {
     x.push(drawing[i].x);
