@@ -1,15 +1,121 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>fourier</title>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.min.js"></script>
-    
-    <script src="bd.js"></script>
-    <script src="fourier.js"></script>
-    <script src="sketch.js"></script>
-  </head>
-  <body></body>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fourier Artisan — Draw with Epicycles</title>
+  <meta name="description"
+    content="Deconstruct any shape into mesmerizing Fourier epicycles. Upload a silhouette or explore the default Bangladesh map drawn with spinning circles." />
+  <meta property="og:title" content="Fourier Artisan" />
+  <meta property="og:description" content="Draw any shape with Fourier Transform epicycles." />
+  <meta property="og:type" content="website" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌀</text></svg>" />
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+</head>
+
+<body>
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="hidden">
+    <div class="loader-ring"></div>
+    <p class="loader-text">Processing outline...</p>
+  </div>
+
+  <!-- Landing Page Layer -->
+  <div id="landing-page">
+    <div class="particles" id="particles"></div>
+    <div class="hero-card">
+      <div class="logo-icon">
+        <div class="logo-orbit"></div>
+        <div class="logo-inner"></div>
+      </div>
+      <h1 class="hero-title">Fourier Artisan</h1>
+      <p class="hero-tagline">Deconstruct form into celestial motion.</p>
+
+      <div class="hero-buttons">
+        <button id="start-default" class="primary">
+          <span class="btn-icon">🗺️</span> Start with Bangladesh Map
+        </button>
+        <button id="upload-trigger" class="secondary-btn">
+          <span class="btn-icon">📤</span> Upload Custom Silhouette
+        </button>
+        <input type="file" id="image-input" accept="image/*" class="hidden">
+      </div>
+
+      <p class="hero-footer">Built with p5.js & Discrete Fourier Transform</p>
+    </div>
+  </div>
+
+  <!-- App Layer -->
+  <div id="app-container">
+    <div class="aspect-ratio-wrapper">
+      <div id="canvas-container"></div>
+
+      <!-- Preview Panel: Before Animation Starts -->
+      <div id="preview-panel" class="side-panel glass-panel">
+        <div class="panel-header">
+          <div class="panel-dot active"></div>
+          <h2>Trace Ready</h2>
+        </div>
+        <p class="panel-desc">Coordinate path successfully extracted.</p>
+
+        <div class="stat-row">
+          <span class="stat-label">Points</span>
+          <span class="stat-value" id="point-count">0</span>
+        </div>
+
+        <div class="input-group">
+          <label>Export Options</label>
+          <div class="secondary-buttons">
+            <button id="export-svg-btn" class="export-btn">
+              <span class="btn-icon">🖼️</span> SVG
+            </button>
+            <button id="export-json-btn" class="export-btn">
+              <span class="btn-icon">📄</span> JSON
+            </button>
+          </div>
+        </div>
+
+        <button id="start-drawing-btn" class="primary full-width">▶ Start Drawing</button>
+      </div>
+
+      <!-- Controls Panel: During Animation -->
+      <div id="controls-panel" class="side-panel glass-panel hidden">
+        <div class="panel-header">
+          <div class="panel-dot drawing"></div>
+          <h3 id="panel-title">Drawing...</h3>
+        </div>
+
+        <div class="input-group">
+          <label for="precision-slider">Complexity Circles: <span id="precision-val">500</span></label>
+          <input type="range" id="precision-slider" min="10" max="1000" value="500" step="10">
+        </div>
+
+        <div class="input-group">
+          <label for="speed-slider">Speed: <span id="speed-val">1×</span></label>
+          <input type="range" id="speed-slider" min="1" max="10" value="1" step="1">
+        </div>
+
+        <div class="progress-container">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="status-box">
+          <div id="status-display">Drawing Path...</div>
+        </div>
+
+        <button id="back-to-landing-btn" class="full-width back-btn">← Back to Start</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="bd.js"></script>
+  <script src="fourier.js"></script>
+  <script src="sketch.js"></script>
+</body>
+
 </html>
